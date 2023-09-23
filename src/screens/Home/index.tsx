@@ -5,9 +5,12 @@ import { useState } from "react";
 
 export default function Home() {
     const [participants, setParticipants]= useState<string[]>([])
-    const [participantName, setParticiantName] = useState('')
+    const [participantName, setParticipantName] = useState('')
 
     function handleAddPerson() {
+        if(participantName == '') {
+            return Alert.alert('Houve um erro', 'Por favor ensira o nome da pessoa antes de adicionar a lista')
+        }
         if(participants.includes(participantName)) {
             return Alert.alert('Participante existe', 'ja existe um na lista como esse nome')
         }
@@ -16,20 +19,26 @@ export default function Home() {
         // setParticipants([...participants, 'Ana'])
         // ou
         setParticipants(prevState => [...prevState, participantName])
+        setParticipantName('')
     }
 
     function handleParticipantRemove(name: string) {
+        // const listadDeParticipants = participants.filter(name != name)
+        // const filteredList =  participants.filter(participant => participant !== name)
+        // setParticipants(filteredList)
+
         // 1 titulo 2 mensagem 3 butoes
         Alert.alert(`Remover`, `Remover o participante ${name}?`, [
             {
                 text: 'sim',
-                onPress: () => Alert.alert('Deletado!')
+                onPress: () => setParticipants(prevState => prevState.filter(participant => participant  !== name))
             },
             {
                 text: 'nao',
                 style: 'cancel'
             }
         ])
+
     }
     //view - div
     return (
@@ -41,8 +50,10 @@ export default function Home() {
                 <TextInput style={styles.input} 
                     placeholder="Nome do participante"
                     placeholderTextColor="#6b6b6b"
-                    onChangeText={text => setParticiantName(text)}
+                    // onChangeText={text => setParticipantName(text)} ou...
+                    onChangeText={setParticipantName}
                     // keyboardType="email-address"
+                    value={participantName} 
                 />
 
                 <TouchableOpacity style={styles.buttonStyle} onPress={handleAddPerson}>
@@ -57,7 +68,7 @@ export default function Home() {
                     <Participant  
                         name={item} 
                         key={item}
-                        onRemove={() =>  handleParticipantRemove(`${item}`)} 
+                        onRemove={() =>  handleParticipantRemove(`${item}`)}
                     />
                 )}
                 showsVerticalScrollIndicator={false}
