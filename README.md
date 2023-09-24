@@ -23,6 +23,9 @@
 
 ## Utilização
 
+![image](https://github.com/Guilhermefonseca2021/hostelList_MOBILE/assets/92196697/dec569d8-0dbd-4861-8c29-563d104578de)
+
+
 🚀 Para utilizar o aplicativo:
 
 1. Na tela inicial, você verá a lista de eventos disponíveis.
