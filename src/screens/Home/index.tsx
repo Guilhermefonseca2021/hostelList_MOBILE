@@ -43,8 +43,8 @@ export default function Home() {
     //view - div
     return (
         <View style={styles.container}>
-            <Text style={styles.eventName}>Nome do evento</Text>
-            <Text style={styles.eventDate}>Quarta, 21 de setembro de 2022</Text>
+            <Text style={styles.eventName}>Lista de convidados</Text>
+            <Text style={styles.eventDate}>Domingo, 31 de setembro de 2023</Text>
  
             <View style={styles.form}>
                 <TextInput style={styles.input} 
@@ -74,7 +74,7 @@ export default function Home() {
                 showsVerticalScrollIndicator={false}
                 ListEmptyComponent={() => (
                     <Text style={styles.listEmptyText}>
-                        Ninguem chegou no evento ainda adiciona participantes a sua lista a sua lista de presenca
+                        Ninguem chegou no evento ainda? adicione participantes a sua lista a sua lista de presenca
                     </Text>
                 )}
             />
